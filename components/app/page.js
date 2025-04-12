@@ -95,7 +95,6 @@ export default function App({id, name}) {
           document.removeEventListener('contextmenu', disableRick)
         }
       }, [])
-    // console.log(data);
     
     return( data ?
         (<section className="sm:px-20 relative">
