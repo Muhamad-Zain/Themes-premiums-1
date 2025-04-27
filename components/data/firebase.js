@@ -17,11 +17,11 @@ const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
     databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
-    projectId: "tryproject-1bfca",
-    storageBucket: "tryproject-1bfca.appspot.com",
-    messagingSenderId: "371216823598",
-    appId: "1:371216823598:web:b28bccdbcd154a4e86f6bf",
-    measurementId: "G-PMPS3HMJ7E"
+    projectId: "wedings-one",
+    storageBucket: "wedings-one.firebasestorage.app",
+    messagingSenderId: "49992893490",
+    appId: "1:49992893490:web:4077263dec14a3dead682b",
+    measurementId: "G-D3NM4LXBKD"
   };
 
 // Initialize Firebase
@@ -36,7 +36,7 @@ const fetchData = async (id) => {
     
     try {
         const dbRef = ref(database);
-        const data = await get(child(dbRef, `/weddings/${id}`))
+        const data = await get(child(dbRef, `/weddings-one/${id}`))
         if (data.exists()) {
             return data.val()
         } else {
@@ -103,7 +103,7 @@ const addDataToFirebase = async (id, formData) => {
     // const id =  Date.now().toString();
 
     try {
-      await set(ref(database, `/weddings/${id}`), formData);
+      await set(ref(database, `/weddings-one/${id}`), formData);
       console.log("Data successfully added!");
     } catch (error) {
       console.error("Error adding data:", error);
