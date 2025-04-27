@@ -10,6 +10,7 @@ export default function AddData() {
     const [newId, setNewId] = useState('')  
     const [message, setMessage] = useState(false)
     const [email, setEmail] = useState('')
+    const [idUndangan, setIdUndangan] = useState('I-')
     const [password, setPassword] = useState('')
     const [verify, setVerify] = useState(false)
     const [err, setErr] = useState('')
@@ -90,14 +91,13 @@ export default function AddData() {
   };
 
 
-  const [idUndangan, setIdUndangan] = useState('')
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const id =  idUndangan;
+    // const id =  idUndangan;
     
     try {
       setMessage(true)
-      await addDataToFirebase(id,data);
+      await addDataToFirebase(idUndangan,data);
       // console.log("Submitted data:", data);
       // Panggil fungsi uploadFiles dengan state files dan kategori
 
@@ -161,8 +161,8 @@ const login = async (email, password) => {
         <section className="max-w-[400px] mb-20 m-auto">
             {verify ? (
               <div>
-              <h3 className="text-center text-xl w-3/4 m-auto py-5 playfair">Add Data to template wedings exlusive</h3>
-              <input type="text" placeholder="Id Undangan" className="text-black outline-none p-2 ml-2 rounded-md" onChange={(e) => setIdUndangan(e.target.value)} />
+              <h3 className="text-center text-xl w-3/4 m-auto py-5 playfair">Add Data to template Themes premiums I</h3>
+              <input type="text" placeholder="Id Undangan I-" value={idUndangan} className="text-black outline-none p-2 ml-2 rounded-md" onChange={(e) => setIdUndangan(e.target.value)} />
 
               <form 
                   onSubmit={handleSubmit}
