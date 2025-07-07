@@ -123,7 +123,6 @@ export default function AddData() {
 
     setNewId(`premium-1.vercel.app/${id}`)
     alert('Berhasil kirim data ke firebase')
-    
   };
 
  
