@@ -88,13 +88,13 @@ export default function App({id, name}) {
         getData()
 
     },[])
-    useEffect(() => {
-        const disableRick = (event) => event.preventDefault();
-        document.addEventListener('contextmenu', disableRick)
-        return() => {
-          document.removeEventListener('contextmenu', disableRick)
-        }
-      }, [])
+    // useEffect(() => {
+    //     const disableRick = (event) => event.preventDefault();
+    //     document.addEventListener('contextmenu', disableRick)
+    //     return() => {
+    //       document.removeEventListener('contextmenu', disableRick)
+    //     }
+    //   }, [])
     
     return( data ?
         (<section className="sm:px-20 relative">

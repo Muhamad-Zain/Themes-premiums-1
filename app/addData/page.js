@@ -1,7 +1,6 @@
 'use client'
 import { addDataToFirebase, uploadFiles, loginUser } from "@/components/data/firebase"
 import { getAuth, onAuthStateChanged } from "firebase/auth"
-// import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react"
 
 
@@ -10,7 +9,7 @@ export default function AddData() {
     const [newId, setNewId] = useState('')  
     const [message, setMessage] = useState(false)
     const [email, setEmail] = useState('')
-    const [idUndangan, setIdUndangan] = useState('I-')
+    const [idUndangan, setIdUndangan] = useState('P1-')
     const [password, setPassword] = useState('')
     const [verify, setVerify] = useState(false)
     const [err, setErr] = useState('')
@@ -98,10 +97,7 @@ export default function AddData() {
     try {
       setMessage(true)
       await addDataToFirebase(idUndangan,data);
-      // console.log("Submitted data:", data);
-      // Panggil fungsi uploadFiles dengan state files dan kategori
-
-      const uploadedFiles = await uploadFiles(id, files, [
+      const uploadedFiles = await uploadFiles(`weddings-one/${idUndangan}`, files, [
       'hero',
       'home',
       'groom',
@@ -121,24 +117,11 @@ export default function AddData() {
       console.error("Error uploading files:", error);
     }
 
-    setNewId(`premium-1.vercel.app/${id}`)
+    setNewId(`premium-1.vercel.app/${idUndangan}`)
     alert('Berhasil kirim data ke firebase')
   };
 
  
-
-  // console.log(name, password);
-  
-  // const handleAuth = () => {
-  //   // e.preventDefault
-  //   if (name === 'owner' && password === '123') {
-  //     setAuth(true)
-  //   } else {
-  //     alert('Autenticarion gagal')
-  //   }
-
-  // }
-
   
 const login = async (email, password) => {
       const fetch = await loginUser(email, password)
