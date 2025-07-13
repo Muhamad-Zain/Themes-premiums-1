@@ -62,21 +62,23 @@ export default function App({id, name}) {
     }
     const navbar = () => setOpen(!open)
     useEffect(() => {
-        window.scrollTo(0,0)
-
-        const handleResize = () => {
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`)
+        const scrollToTop = () => {
+            window.scrollTo({top: 0, left: 0, behavior: 'auto'})
         }
-        handleResize()
-            if(isHidden){
-                document.body.style.overflow = 'hidden'
-            } else {
-                document.body.style.overflow = 'auto'
-            }
+        window.addEventListener('load', scrollToTop)
+        window.addEventListener('beforeunload', scrollToTop)
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`)
+        if(isHidden){
+           document.body.style.overflow = 'hidden'
+        } else {
+           document.body.style.overflow = 'auto'
+        }
             
         return() => {
             document.body.style.overflow = '';
+            window.addEventListener('load', scrollToTop)
+            window.addEventListener('beforeunload', scrollToTop)
         }
     },[isHidden])
 
